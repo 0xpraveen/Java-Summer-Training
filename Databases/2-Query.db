@@ -1,0 +1,146 @@
+MySQL Select Query
+==================================================================================================
+Oracle select query is used to fetch records from database. For example:
+
+-------------------------------------------------------------------------------------------------
+Create table Employee
+----------------------
+Fields are:
+empid(int),firstname,lastname,dob(date),contact,email,gender,designation,salary,state,country,
+joinningdate(date),workinghours(float) ,zipcode(int) and entrydate(timestamp).
+
+Insert 10 minimu records in employee table.
+
+Create table emplyee
+-----------------------
+CREATE TABLE employee
+(
+empid INT PRIMARY KEY AUTO_INCREMENT,
+firstname VARCHAR(100),
+lastname VARCHAR(100),
+dob DATE,
+contact BIGINT,
+email VARCHAR(100),
+gender VARCHAR(10),
+designation VARCHAR(100),
+salary FLOAT,
+state VARCHAR(100),
+country VARCHAR(100),
+joinningdate DATE,
+workinghours FLOAT,
+zipcode INT,
+entrydate TIMESTAMP DEFAULT CURRENT_TIMESTAMP()
+)
+;
+
+Insert 10 records:
+--------------------------
+INSERT INTO employee
+(firstname,lastname,dob,contact,email,gender,designation,salary,state,country,joinningdate,workinghours,zipcode)
+VALUES
+(
+"Rishabh","Raj","2002-07-02","0858964466","rk@gmail.com","Male","Full Java Developer",158000.00,"Punjab","India","2021-12-23",8.00,450001
+),
+(
+"Ronak","Vijay","2002-08-02","864364497563","ronak3@gmail.com","Male","Senior Java Developer",50000.00,"Kerla","India","2022-03-23",12,180001
+),
+(
+"Sivani","Kumari","2002-05-02","231232323","sk1d12@gmail.com","Female","Junior Java Developer",58000.00,"Andhra Pradesh","India","2018-11-23",11.25,340001
+),
+(
+"Ragini","Devi","2002-12-02","3455534544","rd@gmail.com","Female","Api Java Developer",50000.00,"Bihar","India","2023-01-23",7.00,23002
+)
+
+
+SELECT * FROM employee  -- * means all columns and rows will be printed
+
+-- to print specific column's data 
+SELECT col1,col2,col3,,,,coln FROM tablename
+-- Example
+SELECT empid,firstname,lastname,dob,gender,joinningdate FROM employee 
+-- it will print specified columns and all rows
+
+-- specify the columns and rows
+SELECT empid,firstname,lastname,dob FROM employee LIMIT 5
+
+-- specify the row number from and upto using limit
+/*
+   limit startposition numberofrecord
+    Example:
+    limit 0 5
+    in above code it will start printing from first record till next 5 records
+*/
+SELECT empid,firstname,lastname,dob FROM employee LIMIT 0, 5
+
+-- print record from 2nd upto five record
+SELECT empid,firstname,lastname,dob FROM employee LIMIT 2, 5
+=================================================================================================
+
+
+
+SELECT * from customers;  
+==================================================================================================
+A view is a database object that has no values. Its contents are based on the base table. It contains rows and columns similar to the real table. In MySQL, the View is a virtual table created by a query by joining one or more tables. It is operated similarly to the base table but does not contain any data of its own. The View and table have one main difference that the views are definitions built on top of other tables (or views). If any changes occur in the underlying table, the same changes reflected in the View also.
+
+
+Syntax
+Following is the syntax to create a view in MySQL:
+
+CREATE [OR REPLACE] VIEW view_name AS    
+SELECT columns    
+FROM tables    
+[WHERE conditions];    
+
+Example:
+----------------------------------------
+CREATE VIEW trainer AS    
+SELECT course_name, trainer     
+ FROM courses;    
+
+We can see the created view by using the following syntax:
+
+SELECT * FROM view_name;    
+
+We can see the created view by using the following syntax:
+
+SELECT * FROM trainer;    
+
+============================================
+MySQL Update VIEW
+=============================================
+In MYSQL, the ALTER VIEW statement is used to modify or update the already created VIEW without dropping it.
+
+Syntax:
+----------------------------------
+Following is the syntax used to update the existing view in MySQL:
+-------------------------------------------------------------------
+ALTER VIEW view_name AS    
+SELECT columns    
+FROM table    
+WHERE conditions;    
+
+Example:
+====================================================
+The following example will alter the already created VIEW name "trainer" by adding a new column.
+-------------------------------------------------------------
+ALTER VIEW trainer AS    
+SELECT id, course_name, trainer  
+FROM courses;    
+
+
+MySQL Drop VIEW
+---------------------------------------------------------------------
+We can drop the existing VIEW by using the DROP VIEW statement.
+
+Syntax:
+----------------------------------------------------
+The following is the syntax used to delete the view:
+------------------------------------------------------
+DROP VIEW [IF EXISTS] view_name;    
+
+
+Example:
+-----------------------------------
+Suppose we want to delete the view "trainer" that we have created above. Execute the below statement:
+
+DROP VIEW trainer;    
