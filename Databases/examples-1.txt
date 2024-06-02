@@ -1,0 +1,304 @@
+Under lpu database:
+Create table Orders with following feilds:
+1. OrderId(Primary Key)
+2. CustormerID(Foreign Key)
+3. OrderDate
+
+Create table Customers with following feilds:
+1.CustromerID(Primary Key)
+2.CustomerName
+3.ContactName
+4.Country
+
+========================
+Solution:
+CREATE TABLE customers
+(
+  customerid INT PRIMARY KEY AUTO_INCREMENT,
+  customername VARCHAR(100),
+  contactname VARCHAR(100),
+  country VARCHAR(100)
+)
+
+CREATE TABLE orders
+(
+  orderid INT PRIMARY KEY AUTO_INCREMENT,
+  customerid INT,
+  orderdate DATE,
+  FOREIGN KEY (customerid) REFERENCES customers(customerid)
+)
+
+
+
+============================================================================================
+MySQL Joining Tables
+-----------------------
+A JOIN clause is used to combine rows from two or more tables, based on a related column between them.
+
+Let's look at a selection from the "Orders" table:
+
+OrderID	CustomerID	OrderDate
+10308	2		1996-09-18
+10309	37		1996-09-19
+10310	77		1996-09-20
+
+
+Then, look at a selection from the "Customers" table:
+
+CustomerID	CustomerName				ContactName		Country
+1		Alfreds Futterkiste			Maria Anders		Germany
+2		Ana Trujillo Emparedados y helados	Ana Trujillo		Mexico
+3		Antonio Moreno 	Taquería 		Antonio Moreno		Mexico
+=============================================================================================
+Notice that the "CustomerID" column in the "Orders" table refers to the "CustomerID" in the "Customers" table. The relationship between the two tables above is the "CustomerID" column.
+
+Then, we can create the following SQL statement (that contains an INNER JOIN), that selects records that have matching values in both tables:
+
+=============================================================================================
+ExampleGet your own SQL Server
+SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate
+FROM Orders
+INNER JOIN Customers ON Orders.CustomerID=Customers.CustomerID;
+
+and it will produce something like this:
+
+OrderID	CustomerName				OrderDate
+10308	Ana Trujillo Emparedados y helados	9/18/1996
+10365	Antonio Moreno Taquería			11/27/1996
+10383	Around the Horn				12/16/1996
+10355	Around the Horn				11/15/1996
+10278	Berglunds snabbköp			8/12/1996
+
+==============================================================================================
+Supported Types of Joins in MySQL
+----------------------------------------------------------
+* INNER JOIN: Returns records that have matching values in both tables
+* LEFT JOIN: Returns all records from the left table, and the matched records from the right 
+	   table
+* RIGHT JOIN: Returns all records from the right table, and the matched records from the left 
+	    table
+* CROSS JOIN: Returns all records from both tables
+
+=============================================================================================
+MySQL INNER JOIN Keyword
+-----------------------------------
+The INNER JOIN keyword selects records that have matching values in both tables.
+
+INNER JOIN Syntax
+-----------------------------
+SELECT column_name(s)
+FROM table1
+INNER JOIN table2
+ON table1.column_name = table2.column_name;
+
+
+MySQL INNER JOIN Example
+The following SQL statement selects all orders with customer information:
+--------------------------------------------------------------------------------------
+ExampleGet your own SQL Server
+SELECT Orders.OrderID, Customers.CustomerName
+FROM Orders
+INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID;
+
+
+
+Note: The INNER JOIN keyword selects all rows from both tables as long as there is a match between the columns. If there are records in the "Orders" table that do not have matches in "Customers", these orders will not be shown!
+
+JOIN Three Tables
+The following SQL statement selects all orders with customer and shipper information:
+-------------------------------------------------------------------------------------------
+Example
+SELECT Orders.OrderID, Customers.CustomerName, Shippers.ShipperName
+FROM ((Orders
+INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID)
+INNER JOIN Shippers ON Orders.ShipperID = Shippers.ShipperID);
+
+Class Example:
+---------------------------
+SELECT * FROM orders
+SELECT * FROM customers
+
+-- in both table , there is common columns (customerid)
+Joining the table orders and customers based on customerid.
+Example:
+SELECT customers.customerid,customers.customername,customers.country ,
+orders.orderid,orders.orderdate
+FROM customers
+INNER JOIN orders
+ON
+orders.customerid=customers.customerid;
+
+Another Exaample:
+----------------------
+-- join with alias(reference variable) name of table
+SELECT c.customerid,c.customername,c.country ,
+o.orderid,o.orderdate
+FROM customers c
+INNER JOIN orders o
+ON
+o.customerid=c.customerid;
+
+MySQL LEFT JOIN Keyword
+-----------------------------------
+The LEFT JOIN keyword returns all records from the left table (table1), and the matching records (if any) from the right table (table2).
+
+LEFT JOIN Syntax
+----------------------------------
+SELECT column_name(s)
+FROM table1
+LEFT JOIN table2
+ON table1.column_name = table2.column_name;
+
+MySQL LEFT JOIN Example
+The following SQL statement will select all customers, and any orders they might have:
+--------------------------------------------------------------------------------------
+ExampleGet your own SQL Server
+SELECT Customers.CustomerName, Orders.OrderID
+FROM Customers
+LEFT JOIN Orders ON Customers.CustomerID = Orders.CustomerID
+ORDER BY Customers.CustomerName;
+
+Note: The LEFT JOIN keyword returns all records from the left table (Customers), even if there are no matches in the right table (Orders).
+
+Class Example:
+-----------------
+-- left join all data from left but matched data from right
+SELECT c.customerid,c.customername, o.customerid,o.orderid,o.orderdate
+FROM customers c
+LEFT JOIN orders o
+ON
+c.customerid=o.customerid;
+
+Output:
+----------
+"customerid"	"customername"		"customerid"	"orderid"	"orderdate"
+"1"		"Ronak"			"1"		"1"		"2023-06-26"
+"1"		"Ronak"			"1"		"6"		"2023-06-11"
+"2"		"Shubham"		"2"		"4"		"2023-04-01"
+"3"		"Tamanna"		"3"		"5"		"2023-06-07"
+"4"		"Polineni Arun Kumar"	"4"		"2"		"2023-05-01"
+"4"		"Polineni Arun Kumar"	"4"		"3"		"2023-06-12"
+"5"		"Purushottam Kumar"	"5"		"8"		"2023-06-19"
+"6"		"Nehashree giri"	\N		\N		\N
+"7"		"Suraj"			\N		\N		\N
+
+
+MySQL RIGHT JOIN Keyword
+--------------------------------------------------------------------------------------
+The RIGHT JOIN keyword returns all records from the right table (table2), and the matching records (if any) from the left table (table1).
+
+RIGHT JOIN Syntax
+---------------------------------------------------------------------------------------
+SELECT column_name(s)
+FROM table1
+RIGHT JOIN table2
+ON table1.column_name = table2.column_name;
+
+MySQL RIGHT JOIN Example
+The following SQL statement will return all employees, and any orders they might have placed:
+------------------------------------------------------------------------------------
+ExampleGet your own SQL Server
+SELECT Orders.OrderID, Employees.LastName, Employees.FirstName
+FROM Orders
+RIGHT JOIN Employees ON Orders.EmployeeID = Employees.EmployeeID
+ORDER BY Orders.OrderID;
+
+Note: The RIGHT JOIN keyword returns all records from the right table (Employees), even if there are no matches in the left table (Orders).
+
+Exaample:
+----------------
+-- right join all data from right but matched data from left
+SELECT c.customerid,c.customername, o.customerid,o.orderid,o.orderdate
+FROM customers c
+RIGHT JOIN orders o
+ON
+c.customerid=o.customerid;
+
+Output:
+----------
+"customerid"	"customername"		"customerid"	"orderid"	"orderdate"
+"1"		"Ronak"			"1"		"1"		"2023-06-26"
+"4"		"Polineni Arun Kumar"	"4"		"2"		"2023-05-01"
+"4"		"Polineni Arun Kumar"	"4"		"3"		"2023-06-12"
+"2"		"Shubham"		"2"		"4"		"2023-04-01"
+"3"		"Tamanna"		"3"		"5"		"2023-06-07"
+"1"		"Ronak"			"1"		"6"		"2023-06-11"
+"5"		"Purushottam Kumar"	"5"		"8"		"2023-06-19"
+
+Full Outer Join
+----------------
+Rreturns the all data from both table which matches or not 
+------------------------------------------------------------
+-- full join all data from both table either matched or not
+select c.customerid,c.customername, o.customerid,o.orderid,o.orderdate
+from customers c
+full join orders o
+on
+c.customerid=o.customerid;
+
+
+SQL CROSS JOIN Keyword
+-----------------------------------------------------------------------------------------
+The CROSS JOIN keyword returns all records from both tables (table1 and table2).
+
+
+CROSS JOIN Syntax
+----------------------------------------------
+SELECT column_name(s)
+FROM table1
+CROSS JOIN table2;
+
+Note: CROSS JOIN can potentially return very large result-sets!
+
+MySQL CROSS JOIN Example
+The following SQL statement selects all customers, and all orders:
+-------------------------------------------------------------------------------------
+ExampleGet your own SQL Server
+SELECT Customers.CustomerName, Orders.OrderID
+FROM Customers
+CROSS JOIN Orders;
+
+Note: The CROSS JOIN keyword returns all matching records from both tables whether the other table matches or not. So, if there are rows in "Customers" that do not have matches in "Orders", or if there are rows in "Orders" that do not have matches in "Customers", those rows will be listed as well.
+
+If you add a WHERE clause (if table1 and table2 has a relationship), the CROSS JOIN will produce the same result as the INNER JOIN clause:
+------------------------------------------------------------
+Example
+------------
+SELECT Customers.CustomerName, Orders.OrderID
+FROM Customers
+CROSS JOIN Orders
+WHERE Customers.CustomerID=Orders.CustomerID;
+
+Example:
+---------------
+SELECT c.customerid,c.customername, o.customerid,o.orderid,o.orderdate
+FROM customers c CROSS JOIN orders o
+
+MySQL Self Join
+-----------------------
+A self join is a regular join, but the table is joined with itself.
+-----------------------------------------------------------------------------------
+Self Join Syntax
+-------------------------
+SELECT column_name(s)
+FROM table1 T1, table1 T2
+WHERE condition;
+
+T1 and T2 are different table aliases for the same table.
+
+MySQL Self Join Example
+The following SQL statement matches customers that are from the same city:
+------------------------------------------------------------------------------------------
+ExampleGet your own SQL Server
+SELECT A.CustomerName AS CustomerName1, B.CustomerName AS CustomerName2, A.City
+FROM Customers A, Customers B
+WHERE A.CustomerID <> B.CustomerID
+AND A.City = B.City
+ORDER BY A.City;
+
+Class Example:
+SELECT * FROM customers c1,customers c2
+
+=============================================================================================
+Class Revision of Joins:
+------------------------------
