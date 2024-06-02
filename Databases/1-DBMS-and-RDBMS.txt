@@ -1,0 +1,347 @@
+==========================================================================================
+					DBMS and RDBMS
+==========================================================================================
+What is Database
+------------------
+The database is a collection of inter-related data which is used to retrieve, insert and delete the data efficiently. It is also used to organize the data in the form of a table, schema, views, and reports, etc.
+
+For example: The college Database organizes the data about the admin, staff, students and faculty etc.
+
+Using the database, you can easily retrieve, insert, and delete the information.
+
+Database Management System
+------------------------------------------------------
+* Database management system is a software which is used to manage the database. For example: MySQL, Oracle, etc are a very popular commercial database which is used in different applications.
+
+* DBMS provides an interface to perform various operations like database creation, storing data in it, updating data, creating a table in the database and a lot more.
+
+* It provides protection and security to the database. In the case of multiple users, it also maintains data consistency.
+
+
+DBMS allows users the following tasks:
+==========================================================================================
+* Data Definition: It is used for creation, modification, and removal of definition that defines the organization of data in the database.
+
+* Data Updation: It is used for the insertion, modification, and deletion of the actual data in the database.
+
+* Data Retrieval: It is used to retrieve the data from the database which can be used by applications for various purposes.
+
+* User Administration: It is used for registering and monitoring users, maintain data integrity, enforcing data security, dealing with concurrency control, monitoring performance and recovering information corrupted by unexpected failure.
+
+============================================================================================
+Characteristics of DBMS
+-----------------------------------------------------
+* It uses a digital repository established on a server to store and manage the information.
+* It can provide a clear and logical view of the process that manipulates data.
+* DBMS contains automatic backup and recovery procedures.
+* It contains ACID properties which maintain data in a healthy state in case of failure.
+* It can reduce the complex relationship between data.
+* It is used to support manipulation and processing of data.
+* It is used to provide security of data.
+* It can view the database from different viewpoints according to the requirements of the user.
+
+
+Advantages of DBMS
+---------------------------------------------------------
+* Controls database redundancy: It can control data redundancy because it stores all the data in one single database file and that recorded data is placed in the database.
+* Data sharing: In DBMS, the authorized users of an organization can share the data among multiple users.
+* Easily Maintenance: It can be easily maintainable due to the centralized nature of the database system.
+* Reduce time: It reduces development time and maintenance need.
+* Backup: It provides backup and recovery subsystems which create automatic backup of data from hardware and software failures and restores the data if required.
+multiple user interface: It provides different types of user interfaces like graphical user interfaces, application program interfaces
+
+Disadvantages of DBMS
+-------------------------------------------------------------
+* Cost of Hardware and Software: It requires a high speed of data processor and large memory size to run DBMS software.
+* Size: It occupies a large space of disks and large memory to run them efficiently.
+* Complexity: Database system creates additional complexity and requirements.
+* Higher impact of failure: Failure is highly impacted the database because in most of the organization, all the data stored in a single database and if the database is damaged due to electric failure or database corruption then the data may be lost forever.
+
+=============================================================================================
+				Types of Databases
+=============================================================================================
+There are various types of databases used for storing different varieties of data:
+---------------------------------------------------------------------------------------------
+1) Centralized Database
+It is the type of database that stores data at a centralized database system. It comforts the users to access the stored data from different locations through several applications. These applications contain the authentication process to let users access data securely. An example of a Centralized database can be Central Library that carries a central database of each library in a college/university.
+
+2) Distributed Database
+Unlike a centralized database system, in distributed systems, data is distributed among different database systems of an organization. These database systems are connected via communication links. Such links help the end-users to access the data easily. Examples of the Distributed database are Apache Cassandra, HBase, Ignite, etc.
+
+3) Relational Database
+This database is based on the relational data model, which stores data in the form of rows(tuple) and columns(attributes), and together forms a table(relation). A relational database uses SQL for storing, manipulating, as well as maintaining the data. E.F. Codd invented the database in 1970. Each table in the database carries a key that makes the data unique from others. Examples of Relational databases are MySQL, Microsoft SQL Server, Oracle, etc.
+
+4) NoSQL Database
+Non-SQL/Not Only SQL is a type of database that is used for storing a wide range of data sets. It is not a relational database as it stores data not only in tabular form but in several different ways. It came into existence when the demand for building modern applications increased. Thus, NoSQL presented a wide variety of database technologies in response to the demands. 
+
+5) Cloud Database
+A type of database where data is stored in a virtual environment and executes over the cloud computing platform. It provides users with various cloud computing services (SaaS, PaaS, IaaS, etc.) for accessing the database. 
+
+There are numerous cloud platforms, but the best options are:
+--------------------------------------------------------------------------------------
+Amazon Web Services(AWS)
+Microsoft Azure
+Kamatera
+PhonixNAP
+ScienceSoft
+Google Cloud SQL, etc.
+
+
+6) Object-oriented Databases
+The type of database that uses the object-based data model approach for storing data in the database system. The data is represented and stored as objects which are similar to the objects used in the object-oriented programming language.
+
+7) Hierarchical Databases
+It is the type of database that stores data in the form of parent-children relationship nodes. Here, it organizes data in a tree-like structure.
+
+Data get stored in the form of records that are connected via links. Each child record in the tree will contain only one parent. On the other hand, each parent record can have multiple child records.
+
+8) Network Databases
+It is the database that typically follows the network data model. Here, the representation of data is in the form of nodes connected via links between them. Unlike the hierarchical database, it allows each record to have multiple children and parent nodes to form a generalized graph structure.
+
+9) Personal Database
+Collecting and storing data on the user's system defines a Personal Database. This database is basically designed for a single user.
+
+10) Operational Database
+The type of database which creates and updates the database in real-time. It is basically designed for executing and handling the daily data operations in several businesses. For example, An organization uses operational databases for managing per day transactions.
+
+11) Enterprise Database
+Large organizations or enterprises use this database for managing a massive amount of data. It helps organizations to increase and improve their efficiency. Such a database allows simultaneous access to users.
+
+==========================================================================================
+What is RDBMS (Relational Database Management System)
+==========================================================================================
+RDBMS stands for Relational Database Management System.
+
+All modern database management systems like SQL, MS SQL Server, IBM DB2, ORACLE, My-SQL, and Microsoft Access are based on RDBMS.
+
+It is called Relational Database Management System (RDBMS) because it is based on the relational model introduced by E.F. Codd.
+
+What is table/Relation?
+------------------------------------------------
+Everything in a relational database is stored in the form of relations. The RDBMS database uses tables to store data. A table is a collection of related data entries and contains rows and columns to store data. Each table represents some real-world objects such as person, place, or event about which information is collected. The organized collection of data into a relational table is known as the logical view of the database.
+
+
+Properties of a Relation:
+----------------------------------------------------
+* Each relation has a unique name by which it is identified in the database.
+* Relation does not contain duplicate tuples.
+* The tuples of a relation have no specific order.
+* All attributes in a relation are atomic, i.e., each cell of a relation contains exactly one value.
+
+A table is the simplest example of data stored in RDBMS.
+
+NULL Values
+---------------------------------
+The NULL value of the table specifies that the field has been left blank during record creation. It is different from the value filled with zero or a field that contains space.
+
+
+Data Integrity
+-------------------------------------------------------------------------------
+There are the following categories of data integrity exist with each RDBMS:
+------------------------------------------------------------------------------
+* Entity integrity: It specifies that there should be no duplicate rows in a table.
+* Domain integrity: It enforces valid entries for a given column by restricting the type, the 
+  format, or the range of values.
+* Referential integrity specifies that rows cannot be deleted, which are used by other 
+  records.
+* User-defined integrity: It enforces some specific business rules defined by users. These 
+  rules are different from the entity, domain, or referential integrity.
+
+
+
+=============================================================================================
+MySQL
+--------------
+MySQL is a relational database management system based on the Structured Query Language, which is the popular language for accessing and managing the records in the database. MySQL is open-source and free software under the GNU license. It is supported by Oracle Company.
+
+It is developed, marketed, and supported by MySQL AB, a Swedish company, and written in C programming language and C++ programming language. The official pronunciation of MySQL is not the My Sequel; it is My Ess Que Ell. However, you can pronounce it in your way. Many small and big companies use MySQL. MySQL supports many Operating Systems like Windows, Linux, MacOS, etc. with C, C++, and Java languages.
+
+MySQL is a Relational Database Management System (RDBMS) software that provides many things, which are as follows:
+--------------------------------------------------------------------------------------
+* It allows us to implement database operations on tables, rows, columns, and indexes.
+* It defines the database relationship in the form of tables (collection of rows and columns), 
+  also known as relations.
+* It provides the Referential Integrity between rows or columns of various tables.
+* It allows us to updates the table indexes automatically.
+* It uses many SQL queries and combines useful information from multiple tables for the end-
+  users.
+
+Reasons for popularity
+=============================================================================================
+MySQL is becoming so popular because of these following reasons:
+---------------------------------------------------------------------------------------------
+* MySQL is an open-source database, so you don't have to pay a single penny to use it.
+* MySQL is a very powerful program that can handle a large set of functionality of the most 
+  expensive and powerful database packages.
+* MySQL is customizable because it is an open-source database, and the open-source GPL license 
+  facilitates programmers to modify the SQL software according to their own specific 
+  environment.
+* MySQL is quicker than other databases, so it can work well even with the large data set.
+* MySQL supports many operating systems with many languages like PHP, PERL, C, C++, JAVA, etc.
+* MySQL uses a standard form of the well-known SQL data language.
+* MySQL is very friendly with PHP, the most popular language for web development.
+* MySQL supports large databases, up to 50 million rows or more in a table. The default file 
+  size limit for a table is 4GB, but you can increase this (if your operating system can 
+  handle it) to a theoretical limit of 8 million terabytes (TB).
+
+=============================================================================================
+SQL commands are divided into four subgroups, DDL, DML, DCL, and TCL.
+=============================================================================================
+DDL
+-----
+DDL is short name of Data Definition Language, which deals with database schemas and descriptions, of how the data should reside in the database.
+* CREATE - to create a database and its objects like (table, index, views, store procedure, function, and triggers)
+* ALTER - alters the structure of the existing database
+* DROP - delete objects from the database
+* TRUNCATE - remove all records from a table, including all spaces allocated for the records are removed
+* COMMENT - add comments to the data dictionary
+* RENAME - rename an object
+
+DML
+----------
+DML is short name of Data Manipulation Language which deals with data manipulation and includes most common SQL statements such SELECT, INSERT, UPDATE, DELETE, etc., and it is used to store, modify, retrieve, delete and update data in a database.
+* SELECT - retrieve data from a database
+* INSERT - insert data into a table
+* UPDATE - updates existing data within a table
+* DELETE - Delete all records from a database table
+* MERGE - UPSERT operation (insert or update)
+* CALL - call a PL/SQL or Java subprogram
+* EXPLAIN PLAN - interpretation of the data access path
+* LOCK TABLE - concurrency Control
+
+
+DCL
+---------
+DCL is short name of Data Control Language which includes commands such as GRANT and mostly concerned with rights, permissions and other controls of the database system.
+* GRANT - allow users access privileges to the database
+* REVOKE - withdraw users access privileges given by using the GRANT command
+
+TCL
+----------
+TCL is short name of Transaction Control Language which deals with a transaction within a database.
+* COMMIT - commits a Transaction
+* ROLLBACK - rollback a transaction in case of any error occurs
+* SAVEPOINT - to rollback the transaction making points within groups
+* SET TRANSACTION - specify characteristics of the transaction
+
+============================================================================================
+
+DDL
+----------------
+Data Definition Languages
+-------------------------------
+Create database
+---------------------
+create database lpu2;
+
+Create table:
+----------------------------------------
+CREATE TABLE employee
+(
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  empname VARCHAR(100),
+  contact VARCHAR(100),
+  email VARCHAR(100),
+  salary FLOAT,
+  address VARCHAR(1000)
+)
+
+
+Alter table:
+--------------------------
+Add Column:
+ALTER TABLE college
+ADD COLUMN state VARCHAR(100)
+
+SELECT * FROM college
+
+
+Change column's data type:
+-------------------
+ALTER TABLE college
+MODIFY COLUMN state TEXT(100)
+
+Change Name of column:
+------------------------------
+aleter table <tablename>
+change column old_col new_col datatype;
+
+Example:
+ALTER TABLE college
+CHANGE COLUMN zip pin INT
+
+
+
+Delete column from table:
+---------------------------
+ALTER TABLE college
+DROP COLUMN pin
+
+To see the structure of table:
+--------------------------------
+DESCRIBE  college
+
+Change the name of table:
+----------------------------
+RENAME TABLE college TO college1
+
+Delete table 
+-------------------------------------
+DROP TABLE college1
+
+Delete database:
+-------------------------------------
+DROP DATABASE lpu2
+
+============================================================================================
+DML
+-------------------
+Data manipulation languages:
+-----------------------------------
+insert data into table.
+
+---------------------------------------
+INSERT INTO <table_name>(col1,col2..coln)VALUES(val1,val2...valn)
+
+Example:
+INSERT INTO college(collegename)VALUES("Acharya Engineering College")
+
+Example:
+INSERT INTO college(collegename,address)
+VALUES
+("Acharya Engineering College","Bangalore")
+
+Example:
+INSERT INTO college VALUES
+(4,"Shankaracharya College","Bangalore")
+Note :need to give data for all columns
+
+============================================================================================
+Update column's data
+----------------------------------
+update table_name
+set column=value where conditioned_column;
+Example:
+UPDATE college
+SET address="Rajsthan" WHERE id=4
+
+Delete record:
+------------------------------------------
+DELETE FROM <table_name> WHERE condition_column
+
+DELETE FROM college WHERE id=4
+=============================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
